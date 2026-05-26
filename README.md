@@ -6,8 +6,9 @@ prompt is included in [CHALLENGE.md](CHALLENGE.md).
 The program reads one JSON command per line from a text file and writes one JSON
 message per robot to standard output.
 
-Development was test driven with additional functional tests implemented 
-retrospectively.
+Development was test driven with pytest, then retroactively extended with
+PHPUnit black-box functional tests that exercise the Python CLI through real
+instruction files and assert exit codes, stdout, and stderr.
 
 ## Quick start
 
@@ -34,6 +35,16 @@ Run the type checker directly with:
 python -m mypy
 ```
 
+Run the optional PHPUnit functional tests with:
+
+```bash
+composer install
+composer test:php
+```
+
+These tests exercise the Python CLI from the outside, using temporary
+instruction files and asserting the process exit code, stdout, and stderr.
+
 ## Project structure
 
 ```text
@@ -45,6 +56,7 @@ python -m mypy
 │   ├── robot.py           # Robot movement and bearing logic
 │   └── types.py           # Shared typed structures
 ├── tests/                 # Unit, integration, CLI, and typing tests
+├── tests_php/             # PHPUnit functional tests for the CLI
 └── examples/
     └── instructions.txt   # Worked example input
 ```
@@ -67,4 +79,3 @@ positions from `(0, 0)` through `(5, 5)`.
 Robot movement wraps around the asteroid boundary. For example, moving north
 from `(5, 5)` lands at `(5, 0)`, and moving west from `(0, 0)` lands at `(5, 0)`.
 New robots still have to be initialised within the asteroid bounds.
-
