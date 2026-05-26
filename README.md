@@ -1,6 +1,7 @@
 # ESA Robot Coding Challenge
 
-Solution for the ESA asteroid robot coding challenge.
+Solution for the ESA asteroid robot coding challenge. The original challenge 
+prompt is included in [CHALLENGE.md](CHALLENGE.md).
 
 The program reads one JSON command per line from a text file and writes one JSON
 message per robot to standard output.
